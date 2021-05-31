@@ -2,10 +2,9 @@ import React, {FC} from 'react';
 import {View, FlatList, Text, Image, StyleSheet} from 'react-native';
 
 interface Props{
-  data: any []
+  [data: string]: any
 }
-const LoadFlatlist: FC <Props> = ({data}) => {
- 
+const ShowFlatlist: FC <Props> = ({data}) => {
   return(
     <View>         
       <FlatList              
@@ -21,7 +20,7 @@ const LoadFlatlist: FC <Props> = ({data}) => {
   )
 };
 
-export default LoadFlatlist;
+export default ShowFlatlist;
 
 const styles = StyleSheet.create({
    
@@ -34,10 +33,9 @@ const styles = StyleSheet.create({
   textView: { 
       width:'70%', 
       textAlignVertical:'center',
-      padding:2, 
-      
-  }
-   
+      padding:2,      
+  }  
   });
+
 
 
