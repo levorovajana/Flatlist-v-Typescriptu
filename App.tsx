@@ -1,36 +1,28 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
-import LoadData from "./src/Components/loadData";
 import SortButton from "./src/Components/sortButton";
-import LoadFlatlist from "./src/Components/loadFlatlist";
+import ShowFlatlist from "./src/Components/showFlatlist";
 
 const App = () => {
-  const[data, setData] = useState<any>([]);
-  const[order, setOrder] = useState<boolean>(true);//true = ascending
-
-  const updateOrder = (order: boolean):void => {
-    setOrder(order)
-  }
-
-  const updateData = (data: any[]):void => {
-    setData(data)
-  }
   
+  const[data, setData] = useState<string[]>([]);
+  
+  useEffect(() => {
+    fetch('https://raw.githubusercontent.com/RyanHemrick/star_wars_movie_app/master/movies.json')
+      .then((response) => response.json())
+      .then((json) =>  setData(json.movies))
+      .catch((error) => console.error(error))    
+  }, []);
+ 
   return (
     <View style={styles.container}> 
-      <LoadData 
-        updateData = {updateData}>
-      </LoadData> 
-
-      <LoadFlatlist 
+      <ShowFlatlist 
         data = {data} 
       />
 
       <SortButton 
         data = {data} 
-        order={order} 
-        updateData={updateData} 
-        updateOrder={updateOrder}>
+        setData={setData}>
       </SortButton>            
     </View>
   );
