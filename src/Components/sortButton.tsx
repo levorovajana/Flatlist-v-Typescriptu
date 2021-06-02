@@ -2,18 +2,18 @@ import React, {FC} from 'react';
 import {View,Button} from 'react-native';
  
 interface Props{
-    [data: string]: any;
-    setData: (arg: string[]) => void;
+    reverseData: () => void;
+    
   }
 
-  const SortButton: FC <Props>  = ({data,setData}) => {
+  const SortButton: FC <Props>  = ({reverseData}) => {
              
   return(
     <View style={{ flex: 1, padding: 24 }}>         
       <View>
           <Button 
           title="Sort Movies" 
-          onPress={()=>setData([...data].reverse())}> 
+          onPress={()=>reverseData()}> 
           </Button>  
       </View>
     </View>
