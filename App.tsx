@@ -2,10 +2,11 @@ import React,{useState,useEffect} from 'react';
 import { StyleSheet, View } from 'react-native';
 import SortButton from "./src/Components/sortButton";
 import MovieList from "./src/Components/movieList";
+import type {Movie} from "./src/Components/types";
 
 const App = () => {
   
-  const[data, setData] = useState<(string|number)[]>([]);
+  const[data, setData] = useState<Movie []>([]);
   
   useEffect(() => {
     fetch('https://raw.githubusercontent.com/RyanHemrick/star_wars_movie_app/master/movies.json')
