@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {View, FlatList, Text, Image, StyleSheet} from 'react-native';
-
+import type {Movie} from "./types";
 interface Props{
-  [data: string]: any
+  data: Movie[]
 }
 const ShowFlatlist: FC <Props> = ({data}) => {
   return(
