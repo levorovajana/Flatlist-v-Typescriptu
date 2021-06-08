@@ -8,10 +8,12 @@ const App = () => {
   
   const[data, setData] = useState<Movie []>([]);
   
-  useEffect(() => {
+    useEffect(() => {
     fetch('https://raw.githubusercontent.com/RyanHemrick/star_wars_movie_app/master/movies.json')
-      .then((response) => response.json())
-      .then((json) =>  setData(json.movies))
+    .then((response) => response.json())
+    .then((json) => {
+      (json.movies).sort((a: {episode_number:number}, b: {episode_number:number}) => a.episode_number - b.episode_number);
+        setData(json.movies)})
       .catch((error) => console.error(error))    
   }, []);
 
